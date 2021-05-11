@@ -1,0 +1,52 @@
+local plr = game.Players.LocalPlayer
+
+function killaura()
+    while true do
+        for i,v in pairs(game.Players:GetChildren()) do
+            if v.Name ~= plr.Name then
+                local plrs = v.Name
+                    local args = {
+                        [1] = game:GetService("Players").LocalPlayer.Character.Intervention,
+                        [2] = game:GetService("Players").LocalPlayer,
+                        [3] = game:GetService("Players")[plrs].Character.Humanoid,
+                        [4] = game:GetService("Players")[plrs].Character.HumanoidRootPart,
+                        [5] = 202,
+                        [6] = {
+                            [1] = 1,
+                            [2] = 0,
+                            [3] = false,
+                            [4] = false,
+                            [5] = game:GetService("Players").LocalPlayer.Character.Intervention.GunScript_Server.IgniteScript,
+                            [6] = game:GetService("Players").LocalPlayer.Character.Intervention.GunScript_Server.IcifyScript,
+                            [7] = 100,
+                            [8] = 100
+                        },
+                        [7] = {
+                            [1] = false,
+                            [2] = 5,
+                            [3] = 3
+                        },
+                        [8] = game:GetService("Players")[plrs].Character.Head,
+                        [9] = {
+                            [1] = false,
+                            [2] = {
+                                [1] = 1930359546
+                            },
+                            [3] = 1,
+                            [4] = 1.5,
+                            [5] = 1
+                        }
+                    }
+
+                    game:GetService("ReplicatedStorage").InflictTarget:InvokeServer(unpack(args))
+
+                wait(.1)
+
+            end
+        end
+    end
+end
+
+killaura()
+
+
