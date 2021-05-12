@@ -1,52 +1,140 @@
+getgenv().killaura = false
+-- getgenv().tpplayers = false
+
 local plr = game.Players.LocalPlayer
 
-function killaura()
-    while true do
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+
+-- function TPplayers()
+--     while wait() do
+--         if not tpplayer then break end
+--     end
+--         local closest = nil
+--         local closestmag = nil
+--         local closestpart = nil
+--     for i,v in pairs(game.Workspace:GetDescendants()) do
+--        if v.Name == "HumanoidRootPart" then
+--         local target = v.Name
+--         warn(target)
+--         if (v.Position - plr.Character.HumanoidRootPart.Position).Magnitude < 30000 then
+--             if not closest then
+--                 closest = target
+--                 closestpart = v
+--                 closestmag = (v.Position - plr.Character.HumanoidRootPart.Position).Magnitude
+--             elseif (v.Position - plr.Character.HumanoidRootPart.Position).Magnitude < closestmag then
+--                 closest = target
+--                 closestpart = v
+--                 closestmag = (v.Position - plr.Character.HumanoidRootPart.Position).Magnitude
+--             end
+--         end
+--                 local ts = game:GetService("TweenService"):Create(plr.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear), {CFrame = closest}):Play()
+--                 while tpplayer do
+--                     if tpplayer == false then
+--                         break
+--                 end
+--                 print("yes")
+--                 wait()
+--                 TPplayers()
+--             end
+--        end
+--     end
+-- end
+
+
+function antiExploit()
+    game:GetService("Players").LocalPlayer.PlayerGui["anti_Exploit"]:Destroy()
+    game:GetService("Players").LocalPlayer.PlayerGui.yeet:Destroy()
+end
+
+function KillAura()
+    while wait() do
+        if not killaura then break
+        end
         for i,v in pairs(game.Players:GetChildren()) do
             if v.Name ~= plr.Name then
                 local plrs = v.Name
-                    local args = {
-                        [1] = game:GetService("Players").LocalPlayer.Character.Intervention,
-                        [2] = game:GetService("Players").LocalPlayer,
-                        [3] = game:GetService("Players")[plrs].Character.Humanoid,
-                        [4] = game:GetService("Players")[plrs].Character.HumanoidRootPart,
-                        [5] = 202,
-                        [6] = {
-                            [1] = 1,
-                            [2] = 0,
-                            [3] = false,
-                            [4] = false,
-                            [5] = game:GetService("Players").LocalPlayer.Character.Intervention.GunScript_Server.IgniteScript,
-                            [6] = game:GetService("Players").LocalPlayer.Character.Intervention.GunScript_Server.IcifyScript,
-                            [7] = 100,
-                            [8] = 100
-                        },
-                        [7] = {
-                            [1] = false,
-                            [2] = 5,
-                            [3] = 3
-                        },
-                        [8] = game:GetService("Players")[plrs].Character.Head,
-                        [9] = {
-                            [1] = false,
-                            [2] = {
-                                [1] = 1930359546
-                            },
-                            [3] = 1,
-                            [4] = 1.5,
-                            [5] = 1
-                        }
-                    }
-
-                    game:GetService("ReplicatedStorage").InflictTarget:InvokeServer(unpack(args))
-
-                wait(.1)
-
-            end
-        end
-    end
+                    for i,v in pairs(plr.Character:GetChildren()) do
+                        if v.ClassName == "Tool" then
+                            local gun = (v.Name)
+                            local args = {
+                                [1] = game:GetService("Players").LocalPlayer.Character.MP443,
+                                [2] = game:GetService("Players").LocalPlayer,
+                                [3] = game:GetService("Players")[plrs].Character.Humanoid,
+                                [4] = game:GetService("Players")[plrs].Character.HumanoidRootPart,
+                                [5] = 2500,
+                                [6] = {
+                                    [1] = 0,
+                                    [2] = 0,
+                                    [3] = false,
+                                    [4] = false,
+                                    [5] = game:GetService("Players").LocalPlayer.Character.MP443.GunScript_Server.IgniteScript,
+                                    [6] = game:GetService("Players").LocalPlayer.Character.MP443.GunScript_Server.IcifyScript,
+                                    [7] = 100,
+                                    [8] = 100
+                                },
+                                [7] = {
+                                    [1] = false,
+                                    [2] = 5,
+                                    [3] = 3
+                                },
+                                [8] = game:GetService("Players")[plrs].Character.Head,
+                                [9] = {
+                                    [1] = false,
+                                    [2] = {
+                                        [1] = 1930359546
+                                    },
+                                    [3] = 1,
+                                    [4] = 1.5,
+                                    [5] = 1
+                                }
+                            }
+                            game:GetService("ReplicatedStorage").InflictTarget:InvokeServer(unpack(args))
+                            wait()
+                    end
+                end
+             end
+         end
+     end
 end
 
-killaura()
+local w = library:CreateWindow("Military Tycoon")
 
+local e = library:CreateWindow("Credits")
 
+local c = library:CreateWindow("Destroy Gui")
+
+local f = e:CreateFolder("Credits To")
+
+local a = w:CreateFolder("Kill Aura")
+
+local q = c:CreateFolder("Destroy Gui")
+
+q:DestroyGui()
+
+a:Button("Anti Exploit",function()
+    antiExploit()
+end)
+
+a:Toggle("Kill Aura",function(bool)
+    getgenv().killaura = bool
+    print("KillAura is:", (bool))
+    if bool then
+        KillAura()
+    end
+end)
+
+-- a:Toggle("TPAura",function(bool)
+--     getgenv().tpplayers = bool
+--     print("TPAura is:", (bool))
+--     if bool then
+--         TPplayers()
+--     end
+-- end)
+
+f:Label("Luftwaffe#3973",{
+    TextSize = 13;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(26, 26, 26);
+}) 
