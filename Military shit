@@ -59,7 +59,7 @@ function KillAura()
                         if v.ClassName == "Tool" then
                             local gun = (v.Name)
                             local args = {
-                                [1] = game:GetService("Players").LocalPlayer.Character.MP443,
+                                [1] = game:GetService("Players").LocalPlayer.Character[gun],
                                 [2] = game:GetService("Players").LocalPlayer,
                                 [3] = game:GetService("Players")[plrs].Character.Humanoid,
                                 [4] = game:GetService("Players")[plrs].Character.HumanoidRootPart,
@@ -69,8 +69,8 @@ function KillAura()
                                     [2] = 0,
                                     [3] = false,
                                     [4] = false,
-                                    [5] = game:GetService("Players").LocalPlayer.Character.MP443.GunScript_Server.IgniteScript,
-                                    [6] = game:GetService("Players").LocalPlayer.Character.MP443.GunScript_Server.IcifyScript,
+                                    [5] = game:GetService("Players").LocalPlayer.Character[gun].GunScript_Server.IgniteScript,
+                                    [6] = game:GetService("Players").LocalPlayer.Character[gun].GunScript_Server.IcifyScript,
                                     [7] = 100,
                                     [8] = 100
                                 },
