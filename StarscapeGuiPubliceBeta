@@ -56,31 +56,26 @@ function OreEsp()
 end
 
 function NPCEsp()
-    spawn(function()
-        for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetChildren()) do
-            for i,v in pairs(v:GetChildren()) do
-                if v.Name == "Hitbox" then
-                    local npcname = (v.Parent.Name)
-                    local bbG = Instance.new("BillboardGui")
-                    local TxtLbl = Instance.new("TextLabel")
-
-                    bbG.Parent = v.Parent
-                    bbG.AlwaysOnTop = true
-                    bbG.Size = UDim2.new(0,10,0,10)
-                    bbG.StudsOffset = Vector3.new(0,2,0)
-
-                    TxtLbl.Parent = bbG
-                    TxtLbl.BackgroundColor3 = Color3.fromRGB(255,0,0)
-                    TxtLbl.BackgroundTransparency = 0.88
-                    TxtLbl.Size = UDim2.new(1,0,1,0)
-                    TxtLbl.TextColor3 = Color3.fromRGB(255,0,0)
-                    TxtLbl.Text = npcname
-                    TxtLbl.TextScaled = false
-                    TxtLbl.TextSize = 10
-                end
-            end
+    for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetDescendants()) do
+        if v.Name == "Hitbox" then
+            local npcs = v.Parent.Name
+            local bbG = Instance.new("BillboardGui")
+            local TxtLbl = Instance.new("TextLabel")
+            bbG.Parent = v.Parent
+            bbG.AlwaysOnTop = true
+            bbG.Size = UDim2.new(0,10,0,10)
+            bbG.StudsOffset = Vector3.new(0,2,0)
+    
+            TxtLbl.Parent = bbG
+            TxtLbl.BackgroundColor3 = Color3.fromRGB(255,0,0)
+            TxtLbl.BackgroundTransparency = 0.88
+            TxtLbl.Size = UDim2.new(1,0,1,0)
+            TxtLbl.TextColor3 = Color3.fromRGB(255,0,0)
+            TxtLbl.Text = npcs
+            TxtLbl.TextScaled = false
+            TxtLbl.TextSize = 10
         end
-    end)
+    end
 end
 
 function AnomalyFinder()
@@ -101,13 +96,13 @@ function AnomalyFinder()
     end)
 end
 
-function NPCEsp()
-    spawn(function()
-        for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetChildren()) do
-            print(v)
-        end
-    end)
-end
+-- function NPCEsp()
+--     spawn(function()
+--         for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetChildren()) do
+--             print(v)
+--         end
+--     end)
+-- end
 -- function tpto()
 --     local a = game:GetService("Workspace").Features.Wormhole.Cloud.Position
 --     ship:SetPrimaryPartCFrame(CFrame.new(a))
