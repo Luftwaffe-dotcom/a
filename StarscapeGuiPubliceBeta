@@ -1,0 +1,135 @@
+local plrn = game.Players.LocalPlayer.Name
+local plr = game.Players.LocalPlayer
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+local w = library:CreateWindow("Starscape GUI v0.2")
+
+local q = library:CreateWindow("Anomalies")
+
+local e = library:CreateWindow("War shits")
+
+local f = library:CreateWindow("Credits")
+
+local s = q:CreateFolder("AnomaliesFinder")
+
+local a = w:CreateFolder("Ore's")
+
+local d = e:CreateFolder("Esp")
+
+local g = f:CreateFolder("Credits")
+
+
+-- for i,v in pairs(game:GetService("Workspace").Ships[plrn]:GetChildren()) do
+--     local ship = (v)
+-- end
+
+
+function OreEsp()
+    spawn(function()
+        for i,v in pairs(game:GetService("Workspace").Features:GetChildren()) do
+            if v.Name == "AsteroidField" then
+                for i,v in pairs(v:GetChildren()) do
+                    for i,v in pairs(v:GetChildren()) do
+                        if v.Name == "Mineral" then
+                            local bbG = Instance.new("BillboardGui")
+                            local TxtLbl = Instance.new("TextLabel")
+        
+                            bbG.Parent = v.Parent
+                            bbG.AlwaysOnTop = true
+                            bbG.Size = UDim2.new(0,10,0,10)
+                            bbG.StudsOffset = Vector3.new(0,2,0)
+                            
+                            TxtLbl.Parent = bbG
+                            TxtLbl.BackgroundColor3 = v.Color
+                            TxtLbl.BackgroundTransparency = 0
+                            TxtLbl.Size = UDim2.new(1,0,1,0)
+                            TxtLbl.TextColor3 = v.Color
+                            TxtLbl.Text = v.Name
+                            TxtLbl.TextScaled = true
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end
+
+function NPCEsp()
+    spawn(function()
+        for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetChildren()) do
+            for i,v in pairs(v:GetChildren()) do
+                if v.Name == "Hitbox" then
+                    local npcname = (v.Parent.Name)
+                    local bbG = Instance.new("BillboardGui")
+                    local TxtLbl = Instance.new("TextLabel")
+
+                    bbG.Parent = v.Parent
+                    bbG.AlwaysOnTop = true
+                    bbG.Size = UDim2.new(0,10,0,10)
+                    bbG.StudsOffset = Vector3.new(0,2,0)
+
+                    TxtLbl.Parent = bbG
+                    TxtLbl.BackgroundColor3 = Color3.fromRGB(255,0,0)
+                    TxtLbl.BackgroundTransparency = 0.88
+                    TxtLbl.Size = UDim2.new(1,0,1,0)
+                    TxtLbl.TextColor3 = Color3.fromRGB(255,0,0)
+                    TxtLbl.Text = npcname
+                    TxtLbl.TextScaled = false
+                    TxtLbl.TextSize = 10
+                end
+            end
+        end
+    end)
+end
+
+function AnomalyFinder()
+    spawn(function()
+        for i,v in pairs(game:GetService("Workspace").Objects.Anomalies:GetChildren()) do
+            print(v)
+            local anomalies = s:Label("Pretty Useless NGL",{
+                TextSize = 25; -- Self Explaining
+                TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+                BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+            }) 
+            if v then
+                anomalies:Refresh(v.Name)
+            else
+                anomalies:Refresh("No Anomalies")
+            end
+        end
+    end)
+end
+
+function NPCEsp()
+    spawn(function()
+        for i,v in pairs(game:GetService("Workspace").NPCs.Ships:GetChildren()) do
+            print(v)
+        end
+    end)
+end
+-- function tpto()
+--     local a = game:GetService("Workspace").Features.Wormhole.Cloud.Position
+--     ship:SetPrimaryPartCFrame(CFrame.new(a))
+-- end
+
+a:Button("Ore Esp",function()
+    OreEsp()
+end)
+
+s:Button("Anomalies",function()
+    AnomalyFinder()
+end)
+
+d:Button("NPCEsp", function()
+    NPCEsp()
+end)
+
+g:DestroyGui()
+
+g:Label("Luftwaffe#3973",{
+    TextSize = 25; -- Self Explaining
+    TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+    BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    
+}) 
