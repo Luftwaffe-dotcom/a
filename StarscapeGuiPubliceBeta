@@ -45,7 +45,7 @@ function OreEsp()
                             TxtLbl.BackgroundTransparency = 0
                             TxtLbl.Size = UDim2.new(1,0,1,0)
                             TxtLbl.TextColor3 = v.Color
-                            TxtLbl.Text = v.Name
+                            TxtLbl.Text = v.Parent.Name
                             TxtLbl.TextScaled = true
                         end
                     end
@@ -77,6 +77,34 @@ function NPCEsp()
         end
     end
 end
+
+function PlayerEsp()
+    for i,v in pairs(game.Players:GetChildren()) do
+        if v.Name ~= plr.Name then
+            for i,v in pairs(v.Character:GetChildren()) do
+                if v.Name == "HumanoidRootPart" then
+                    local bbG = Instance.new("BillboardGui")
+                    local TxtLbl = Instance.new("TextLabel")
+    
+                    bbG.Parent = v.Parent
+                    bbG.AlwaysOnTop = true
+                    bbG.Size = UDim2.new(0,10,0,10)
+                    bbG.StudsOffset = Vector3.new(0,2,0)
+                    
+                    TxtLbl.Parent = bbG
+                    TxtLbl.BackgroundColor3 = v.Color
+                    TxtLbl.BackgroundTransparency = 1
+                    TxtLbl.Size = UDim2.new(1,0,1,0)
+                    TxtLbl.TextColor3 = Color3.fromRGB(0,255,255)
+                    TxtLbl.Text = v.Parent.Name
+                    TxtLbl.TextScaled = false
+                end
+            end
+        end
+    end     
+end
+
+
 
 function AnomalyFinder()
     spawn(function()
@@ -111,6 +139,11 @@ end
 a:Button("Ore Esp",function()
     OreEsp()
 end)
+
+d:Button("PlayerEsp",function()
+    PlayerEsp()
+end)
+
 
 s:Button("Anomalies",function()
     AnomalyFinder()
